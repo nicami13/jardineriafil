@@ -8,7 +8,7 @@ namespace Domain.Interfaces
 {
     public interface ICliente: IGenericRepository<Cliente> 
     {
-        Task<IEnumerable<string>> GetNameSpainCoustumers();
+        Task<IEnumerable<Cliente>> GetClientesSinPagos();
 
     }
 }

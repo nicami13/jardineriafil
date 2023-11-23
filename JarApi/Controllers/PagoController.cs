@@ -46,6 +46,7 @@ namespace JarApi.Controllers
                 return StatusCode(500, "Error interno del servidor");
             }
         }
+ 
         [HttpGet("FormasPagoUnicas")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -31,7 +31,23 @@ public class ClienteController : BaseController
 
         return _mapper.Map<List<ClienteDto>>(clientes);
     }
-    
+    [HttpGet("GetClientesSinpagos")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetClientesSinpagos()
+    {
+        try
+        {
+            var clientes = await _unitOfWork.Clientes.GetClientesSinPagos();
+            return Ok(clientes);
+        }
+        catch (Exception ex)
+        {
+            // Log y manejo de errores
+            return StatusCode(500, "Error interno del servidor");
+        }
+    }
+
 
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
