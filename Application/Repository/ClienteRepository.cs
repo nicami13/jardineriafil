@@ -38,6 +38,5 @@ namespace Application.Repository
 
             return result;
         }
-
-    }
+}
 }

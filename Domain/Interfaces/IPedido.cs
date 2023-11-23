@@ -7,6 +7,7 @@ namespace Domain.Interfaces
         Task<IEnumerable<string>> GetPedidoEstadosAsync();
 
         Task<IEnumerable<Pago>> GetPagos2008Paypal();
-    
+        Task<IEnumerable<object>> cuentapedido();
+
     }
 }

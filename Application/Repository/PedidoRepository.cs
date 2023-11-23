@@ -47,6 +47,16 @@ namespace Application.Repository
 
             return pagos;
         }
+        
+    public async Task<IEnumerable<object>> cuentapedido()
+        {
+            var result = from r in _context.Pedidos
+                         group r by r.Estado into m
+                         select new { Estado = m.Key, ConPedido = m.Count() };
+            return await result.OrderByDescending(hf => hf.ConPedido).ToListAsync();
+        }
+
+    }
 
 
 

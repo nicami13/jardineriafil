@@ -61,6 +61,37 @@ namespace JarApi.Controllers
             return _mapper.Map<PedidoDto>(pedido);
         }
 
+        [HttpGet("CuentaEstadoPedido")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetFormasPagoUnicas()
+        {
+            try
+            {
+                var formasPago = await _unitOfWork.Pagos.GetFormasPagoUnicas();
+                return Ok(formasPago);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+               [HttpGet("CuentaPedidos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Unicascuentapedido()
+        {
+            try
+            {
+                var formasPago = await _unitOfWork.Pedidos.cuentapedido();
+                return Ok(formasPago);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
