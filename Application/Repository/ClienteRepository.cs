@@ -19,6 +19,7 @@ namespace Application.Repository
         }
 
 
+
         public async Task<IEnumerable<string>> GetNameSpainCoustumers()
         {
             var result = await _context.Clientes

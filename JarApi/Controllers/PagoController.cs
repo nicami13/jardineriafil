@@ -31,14 +31,14 @@ namespace JarApi.Controllers
             return _mapper.Map<List<PagoDto>>(pagos);
         }
 
-        [HttpGet("clientesConPagosEn2008")]
+        [HttpGet("GetPaypalPagosEn2008")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetClientesConPagosEn2008()
         {
             try
             {
-                var clientes = await _unitOfWork.Pagos.GetClientesConPagosEn2008();
+                var clientes = await _unitOfWork.Pagos.GetPaypalPagosEn2008();
                 return Ok(clientes);
             }
             catch (Exception ex)

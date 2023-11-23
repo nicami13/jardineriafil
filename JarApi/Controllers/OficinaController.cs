@@ -30,36 +30,6 @@ namespace JarApi.Controllers
 
             return _mapper.Map<List<OficinaDto>>(oficinas);
         }
-        [HttpGet("GetPOFCodeAndCity")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<OPFDto>>> GetCoutriesStateCities()
-        {
-            var oficinas = await _unitOfWork.Oficinas.GetPOFCodeAndCity();
-            return _mapper.Map<List<OPFDto>>(oficinas);
-        }
-
-        [HttpGet("GetCityAndPhoneOfficeSpain")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<CTOFDto>>> GetCityAndPhoneOfficeSpain()
-        {
-            var countries = await _unitOfWork.Oficinas.GetCityAndPhoneOfficeSpain();
-            return _mapper.Map<List<CTOFDto>>(countries);
-        }
-
-        [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<OficinaDto>> Get(string id)
-        {
-            var oficina = await _unitOfWork.Oficinas.GetByIdSTring(id);
-            if (oficina == null)
-                return NotFound();
-
-            return _mapper.Map<OficinaDto>(oficina);
-        }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]

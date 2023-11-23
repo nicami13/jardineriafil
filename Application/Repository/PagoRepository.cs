@@ -17,16 +17,19 @@ namespace Application.Repository
         {
             _context = context;
         }
-        public async Task<IEnumerable<int>> GetClientesConPagosEn2008()
-        {
-            var result = await _context.Pagos
-                .Where(pago => pago.FechaPago >= new DateTime(2008, 1, 1) && pago.FechaPago < new DateTime(2009, 1, 1))
-                .Select(pago => pago.CodigoCliente)
-                .Distinct()
-                .ToListAsync();
+public async Task<IEnumerable<Pago>> GetPaypalPagosEn2008()
+{
+    var result = await _context.Pagos
+        .Where(pago =>
+            pago.FechaPago >= new DateTime(2008, 1, 1) && pago.FechaPago < new DateTime(2009, 1, 1) &&
+            pago.FormaPago == "PayPal")  // Agrega la condición para el método de pago PayPal
+        .Select(pago => pago)
+        .Distinct()
+        .ToListAsync();
 
-            return result;
-        }
+    return result;
+}
+
         public async Task<IEnumerable<string>> GetFormasPagoUnicas()
         {
             var formasPago = await _context.Pagos

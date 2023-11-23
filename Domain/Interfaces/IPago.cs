@@ -8,7 +8,7 @@ namespace Domain.Interfaces
 {
     public interface IPago : IGenericRepository<Pago>
     {
-        Task<IEnumerable<int>> GetClientesConPagosEn2008();
+        Task<IEnumerable<Pago>> GetPaypalPagosEn2008();
         Task<IEnumerable<string>> GetFormasPagoUnicas();
     }
 }
