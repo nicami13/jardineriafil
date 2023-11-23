@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Domain.entities;
-using ApiApolo.Controllers;
 
 namespace JarApi.Controllers
 {
@@ -46,6 +45,7 @@ namespace JarApi.Controllers
                 return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
+
 
 
         [HttpGet("{id}")]

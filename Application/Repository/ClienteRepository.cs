@@ -29,6 +29,15 @@ namespace Application.Repository
 
             return result;
         }
+        public async Task<IEnumerable<Cliente>> GetClientesSinPagos()
+        {
+            var result = await _context.Clientes
+                .Where(cliente => !cliente.Pagos.Any())
+                .Select(cliente=> cliente)
+                .ToListAsync();
+
+            return result;
+        }
 
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Domain.entities;
-using ApiApolo.Controllers;
+
 
 namespace JarApi.Controllers
 {
@@ -29,6 +29,21 @@ namespace JarApi.Controllers
             var productos = await _unitOfWork.Productos.GetAllAsync();
 
             return _mapper.Map<List<ProductoDto>>(productos);
+        }
+        [HttpGet("GetProductosConDetallesVacios")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetProductosConDetallesVacios()
+        {
+            try
+            {
+                var pagos = await _unitOfWork.Productos.GetProductosConDetallesVacios();
+                return Ok(pagos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
         }
 
         [HttpGet("{id}")]

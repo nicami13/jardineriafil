@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Domain.entities;
-using ApiApolo.Controllers;
 
 namespace JarApi.Controllers
 {
@@ -48,6 +47,8 @@ namespace JarApi.Controllers
             }
         }
         [HttpGet("FormasPagoUnicas")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetFormasPagoUnicas()
         {
             try

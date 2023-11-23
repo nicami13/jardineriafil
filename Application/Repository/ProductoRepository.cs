@@ -17,7 +17,7 @@ namespace Application.Repository
         {
             _context = context;
         }
- public async Task<IEnumerable<Producto>> GetProductosConDetallesVacios()
+        public async Task<IEnumerable<Producto>> GetProductosConDetallesVacios()
         {
             var result = await _context.Productos
                 .Where(producto => !producto.DetallePedidos.Any())
@@ -25,6 +25,7 @@ namespace Application.Repository
 
             return result;
         }
+
 
     }
 }
